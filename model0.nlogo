@@ -59,8 +59,7 @@ to go
     ]
     [
      let avg-bmi mean [bmi] of link-neighbors
-     set bmi avg-bmi
-    
+     set bmi (bmi + avg-bmi + caloric-density) / 3
     ]
     color-from-bmi
   ]
