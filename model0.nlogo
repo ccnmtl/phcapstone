@@ -40,10 +40,6 @@ to setup-network
       if choice != nobody [ create-link-with choice ]
     ]
   ]
-;;  repeat 10
-;;  [
-;    layout-spring turtles links 0.3 (world-width / (sqrt number-of-nodes)) 1
-;  ]
 end
 
 to setup-patches
@@ -76,7 +72,7 @@ to color-from-bmi ;; turtle procedure
 end
 
 to recolor-patches
-  ask patches [ set pcolor scale-color red caloric-density 0 500 ]
+  ask patches [ set pcolor scale-color black caloric-density 0 500 ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -115,7 +111,7 @@ number-of-nodes
 number-of-nodes
 0
 200
-139
+182
 1
 1
 NIL
@@ -516,5 +512,5 @@ Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 
 @#$#@#$#@
-0
+1
 @#$#@#$#@
