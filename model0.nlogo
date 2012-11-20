@@ -13,6 +13,7 @@ to setup
   set-default-shape turtles "circle"
   setup-nodes
   ask turtles [color-from-bmi]
+  ask turtles [set size .5]
   setup-patches
   recolor-patches
   setup-network
@@ -62,12 +63,12 @@ to go
   tick
 end
 
-to color-from-bmi ;; turtle procedure
+to color-from-bmi ;; turtle procedure 
   ifelse bmi > 60
-    [ set color red ]
+    [ set color scale-color red bmi 40 120 ]
     [ ifelse bmi > 30 
-      [ set color yellow ]
-      [ set color green ]
+      [ set color scale-color green bmi 10 80  ]
+      [ set color scale-color blue bmi -50 50 ]
     ]
 end
 
@@ -145,7 +146,7 @@ number-of-nodes
 number-of-nodes
 0
 500
-420
+373
 1
 1
 NIL
