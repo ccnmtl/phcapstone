@@ -43,7 +43,7 @@ to setup-network
 end
 
 to setup-patches
-  ask patches [ set caloric-density random 100 ]
+  ask patches [ set caloric-density pxcor * (100 / max-pxcor) ]
 end
 
 to go
@@ -145,7 +145,7 @@ number-of-nodes
 number-of-nodes
 0
 500
-247
+420
 1
 1
 NIL
