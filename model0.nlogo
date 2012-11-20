@@ -72,7 +72,7 @@ to color-from-bmi ;; turtle procedure
 end
 
 to recolor-patches
-  ask patches [ set pcolor scale-color black caloric-density 0 500 ]
+  ask patches [ set pcolor scale-color black caloric-density 0 200 ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -102,21 +102,6 @@ GRAPHICS-WINDOW
 ticks
 30.0
 
-SLIDER
-114
-81
-294
-114
-number-of-nodes
-number-of-nodes
-0
-200
-182
-1
-1
-NIL
-HORIZONTAL
-
 BUTTON
 12
 154
@@ -142,6 +127,38 @@ BUTTON
 NIL
 go
 T
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+SLIDER
+25
+25
+202
+58
+number-of-nodes
+number-of-nodes
+0
+500
+247
+1
+1
+NIL
+HORIZONTAL
+
+BUTTON
+115
+255
+177
+288
+step
+go
+NIL
 1
 T
 OBSERVER
