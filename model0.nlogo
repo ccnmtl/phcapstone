@@ -59,6 +59,7 @@ to go
      set bmi (bmi + avg-bmi + caloric-density) / 3
     ]
     color-from-bmi
+    move-if-starving
   ]
   tick
 end
@@ -74,6 +75,14 @@ end
 
 to recolor-patches
   ask patches [ set pcolor scale-color black caloric-density 0 200 ]
+end
+
+to move-if-starving ; turtle procedure
+  let starving? bmi < 30
+  if starving? 
+  [
+    uphill caloric-density
+  ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -146,7 +155,7 @@ number-of-nodes
 number-of-nodes
 0
 500
-373
+426
 1
 1
 NIL
