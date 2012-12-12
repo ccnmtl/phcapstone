@@ -39,6 +39,9 @@ to setup-nodes
     ; for visual reasons, we don't put any nodes *too* close to the edges
     setxy (random-xcor * 0.95) (random-ycor * 0.95)
     set bmi random-normal 50 25
+    set force-of-diet-habit 50
+    set physical-activity 50
+    set psych-ambivalence 50
   ]
 end
 
@@ -69,6 +72,9 @@ to go
     [
      let avg-bmi mean [bmi] of link-neighbors
      set bmi (bmi + avg-bmi + caloric-density) / 3
+     set force-of-diet-habit calculate-force-of-diet-habit
+     set physical-activity calculate-physical-activity
+     set psych-ambivalence calculate-psych-ambivalence
     ]
     color-from-bmi
     move-if-starving
@@ -95,6 +101,18 @@ to move-if-starving ; turtle procedure
   [
     uphill caloric-density
   ]
+end
+
+to-report calculate-force-of-diet-habit ;; turtle procedure
+  report food-exposure + food-energy-density + food-convenience + psych-ambivalence
+end
+
+to-report calculate-physical-activity ;; turtle-procedure
+  report recreation-activity + domestic-activity + transport-activity + education-activity
+end
+
+to-report calculate-psych-ambivalence ;; turtle-procedure
+  report food-exposure + food-advertising + food-literacy + physical-activity
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
