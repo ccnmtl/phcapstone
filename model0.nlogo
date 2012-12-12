@@ -1,11 +1,23 @@
 turtles-own 
 [
   bmi
+  force-of-diet-habit
+  physical-activity
+  psych-ambivalence
 ]
 
 patches-own
 [
   caloric-density
+  food-exposure
+  food-energy-density
+  food-advertising
+  food-convenience
+  food-literacy
+  recreation-activity
+  domestic-activity
+  transport-activity
+  education-activity
 ]
 
 to setup
