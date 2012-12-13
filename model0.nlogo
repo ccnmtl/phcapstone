@@ -65,17 +65,10 @@ end
 to go
   ask turtles
   [
-    ifelse empty? [bmi] of link-neighbors
-    [
-      set bmi (bmi + caloric-density) / 2
-    ]
-    [
-     let avg-bmi mean [bmi] of link-neighbors
-     set bmi (bmi + avg-bmi + caloric-density) / 3
-     set force-of-diet-habit calculate-force-of-diet-habit
-     set physical-activity calculate-physical-activity
-     set psych-ambivalence calculate-psych-ambivalence
-    ]
+    set bmi calculate-bmi
+    set force-of-diet-habit calculate-force-of-diet-habit
+    set physical-activity calculate-physical-activity
+    set psych-ambivalence calculate-psych-ambivalence
     color-from-bmi
     move-if-starving
   ]
@@ -101,6 +94,17 @@ to move-if-starving ; turtle procedure
   [
     uphill caloric-density
   ]
+end
+
+to-report calculate-bmi ;; turtle procedure
+  ifelse empty? [bmi] of link-neighbors
+    [
+      report (bmi + caloric-density) / 2
+    ]
+    [
+     let avg-bmi mean [bmi] of link-neighbors
+     report (bmi + avg-bmi + caloric-density) / 3
+    ]
 end
 
 to-report calculate-force-of-diet-habit ;; turtle procedure
