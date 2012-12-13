@@ -89,11 +89,14 @@ to recolor-patches
 end
 
 to move-if-starving ; turtle procedure
-  let starving? bmi < 30
   if starving? 
   [
     uphill caloric-density
   ]
+end
+
+to-report starving? ; turtle procedure
+  report bmi < 30
 end
 
 to-report calculate-bmi ;; turtle procedure
