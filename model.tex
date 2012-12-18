@@ -1,0 +1,148 @@
+
+\documentclass[12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{PH Capstone Model}
+\author{Columbia University}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Description of the model for the PH Capstone project. As designed by Mark Orr. translated to \LaTeX and tweaked by Anders Pearson.
+\end{abstract}
+
+\section{Introduction}
+
+I'm rewriting stuff in \LaTeX partially to have a good text copy that can be kept up-to-date in the git repo, and partly to learn \LaTeX better.
+
+
+\section{Core Agent Variables}
+
+\begin{itemize}
+\item mass
+\item input
+\item base-output
+\item total-output
+\item force-of-habit
+\item c-control (for conscious control of energy intake)
+\item physical-activity
+\item friend-input
+\item friend-output
+\end{itemize}
+
+
+\section{Environment-Variables}
+
+All of these are (0-1), continuous variables
+
+\begin{itemize}
+\item food-exposure
+\item food-energy-density
+\item food-advertising
+\item food-convenience
+\item food-literacy
+\item recreation-activity
+\item domestic-activity
+\item transport-activity
+\item education-activity
+\end{itemize}
+
+
+\section{Agent Equations}
+
+\subsection{Agent Mass}
+
+\begin{equation}
+mass = mass_{t-1} + f(\text{input} - \text{total-output}) * \gamma_1
+\end{equation}
+
+and $\gamma_1 = 1$. Where $f(\text{input} - \text{total-input})$ is
+
+\begin{equation}
+\frac{1}{1 + e^{-(input - \text{total-output}) * \gamma_1}} - 0.50
+\end{equation}
+
+and $\gamma_1 = 1$.
+
+
+\subsection{Agent Energy Intake}
+
+\begin{equation}
+input = \text{total-output} + \text{force-of-habit} * \gamma_2 + \text{friend-input} * \gamma_3 - \text{c-control}* \gamma_4
+\end{equation}
+
+Where force-of-habit is
+
+\begin{equation}
+\frac{1}{1 + e^{-10(\sum_{1}^{4}FoodEnviron - 0.50)}}
+\end{equation}
+
+c-control is
+
+\begin{equation}
+\frac{1}{1 + e^{-10(\sum_{5}^{5}FoodEnviron - 0.50)}}
+\end{equation}
+
+friend-input is
+
+\begin{equation}
+\frac{1}{1 + e^{-10(x - 0.50)}} - 0.50
+\end{equation}
+
+where x is \% of social network ties with input $>=$ agent's own input. and $ \gamma_2 \ldots \gamma_4 = 1$.
+
+\subsection{Agent Energy Expenditure}
+
+\begin{equation}
+\text{total-output} = \text{base-output} + \text{physical-activity}*\gamma_5 + \text{friend-output}*\gamma_6
+\end{equation}
+
+where  physical-activity is
+
+\begin{equation}
+\frac{1}{1 + e^{-10(\sum_{1}^{4}PhysActivEnviron - 0.50)}}
+\end{equation}
+
+and friend-output is
+
+\begin{equation}
+\frac{1}{1 + e^{-10(x - 0.50)}} - 0.50
+\end{equation}
+
+
+where x is \% of social network ties with total-output $>=$ agent's own input and $\gamma_5, \gamma_6 = 1$
+
+
+\section{Dynamics of Model}
+
+\subsection{Initialization of the model}
+
+Note: $N(x,y)$ is normal distribution with mean x and sd y.
+
+AGENT LEVEL
+
+$$ mass = N(100, 20)$$
+$$ \text{base-output} = N(100, 5)$$
+
+ENVIRONMENT LEVEL
+
+$$ \text{recreation-activity} = N(0.5, 0.10) $$
+$$ \text{domestic-activity} = N(0.5, 0.10) $$
+$$ \text{transport-activity} = N(0.5, 0.10) $$
+
+$$ \text{food-exposure} = N(0.5, 0.10) $$
+$$ \text{food-energy-density} = N(0.5, 0.10) $$
+$$ \text{food-advertising} = N(0.5, 0.10) $$
+$$ \text{food-convenience} = N(0.5, 0.10) $$
+$$ \text{food-literacy} = N(0.5, 0.10) $$
+
+
+
+
+
+\end{document}
