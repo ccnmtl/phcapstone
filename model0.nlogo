@@ -76,7 +76,7 @@ to go
 end
 
 to color-from-bmi ;; turtle procedure 
-  ifelse bmi > 60
+  ifelse overweight?
     [ set color scale-color red bmi 40 120 ]
     [ ifelse bmi > 30 
       [ set color scale-color green bmi 10 80  ]
@@ -93,6 +93,10 @@ to move-if-starving ; turtle procedure
   [
     uphill caloric-density
   ]
+end
+
+to-report overweight?
+  report bmi > 60
 end
 
 to-report starving? ; turtle procedure
