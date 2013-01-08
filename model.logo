@@ -99,7 +99,7 @@ to go
     set input calculate-input
     set mass calculate-mass
     color-from-mass
-    ; move-if-starving
+    move-if-starving
   ]
   tick
 end
