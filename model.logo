@@ -1,6 +1,6 @@
 turtles-own 
 [
-  bmi
+  mass
   force-of-diet-habit
   physical-activity
   psych-ambivalence
@@ -24,7 +24,7 @@ to setup
   clear-all
   set-default-shape turtles "circle"
   setup-nodes
-  ask turtles [color-from-bmi]
+  ask turtles [color-from-mass]
   ask turtles [set size .5]
   setup-patches
   recolor-patches
@@ -38,7 +38,7 @@ to setup-nodes
   [
     ; for visual reasons, we don't put any nodes *too* close to the edges
     setxy (random-xcor * 0.95) (random-ycor * 0.95)
-    set bmi random-normal 50 25
+    set mass random-normal 50 25
     set force-of-diet-habit 50
     set physical-activity 50
     set psych-ambivalence 50
@@ -65,22 +65,22 @@ end
 to go
   ask turtles
   [
-    set bmi calculate-bmi
+    set mass calculate-mass
     set force-of-diet-habit calculate-force-of-diet-habit
     set physical-activity calculate-physical-activity
     set psych-ambivalence calculate-psych-ambivalence
-    color-from-bmi
+    color-from-mass
     move-if-starving
   ]
   tick
 end
 
-to color-from-bmi ;; turtle procedure 
+to color-from-mass ;; turtle procedure 
   ifelse overweight?
-    [ set color scale-color red bmi 40 120 ]
-    [ ifelse bmi > 30 
-      [ set color scale-color green bmi 10 80  ]
-      [ set color scale-color blue bmi -50 50 ]
+    [ set color scale-color red mass 40 120 ]
+    [ ifelse mass > 30 
+      [ set color scale-color green mass 10 80  ]
+      [ set color scale-color blue mass -50 50 ]
     ]
 end
 
@@ -96,21 +96,21 @@ to move-if-starving ; turtle procedure
 end
 
 to-report overweight?
-  report bmi > 60
+  report mass > 60
 end
 
 to-report starving? ; turtle procedure
-  report bmi < 30
+  report mass < 30
 end
 
-to-report calculate-bmi ;; turtle procedure
-  ifelse empty? [bmi] of link-neighbors
+to-report calculate-mass ;; turtle procedure
+  ifelse empty? [mass] of link-neighbors
     [
-      report (bmi + caloric-density) / 2
+      report (mass + caloric-density) / 2
     ]
     [
-     let avg-bmi mean [bmi] of link-neighbors
-     report (bmi + avg-bmi + caloric-density) / 3
+     let avg-mass mean [mass] of link-neighbors
+     report (mass + avg-mass + caloric-density) / 3
     ]
 end
 
