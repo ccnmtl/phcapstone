@@ -106,15 +106,16 @@ end
 
 to color-from-mass ;; turtle procedure 
   ifelse overweight?
-    [ set color scale-color red mass 80 140 ]
-    [ ifelse mass > 30 
-      [ set color scale-color green mass 10 80  ]
-      [ set color scale-color blue mass -50 50 ]
+    [ set color red ]
+    [ ifelse not starving? 
+      [ set color green ]
+      [ set color blue ]
     ]
+  set size mass / 200
 end
 
 to recolor-patches
-  ask patches [ set pcolor scale-color black food-energy-density 0 2 ]
+  ask patches [ set pcolor scale-color black food-energy-density 0 1.5 ]
 end
 
 to move-if-starving ; turtle procedure
@@ -133,7 +134,7 @@ to-report starving? ; turtle procedure
 end
 
 to-report calculate-total-output ;; turtle procedure
-  report (base-output + physical-activity * gamma5 + friend-output * gamma6)
+  report base-output + physical-activity * gamma5 + friend-output * gamma6
 end
 
 to-report friend-output
@@ -148,7 +149,15 @@ to-report network-output-percent ;; turtle procedure
 end
 
 to-report physical-activity ;; turtle-procedure
-  report (1 / (1 + exp (-10 * ((recreation-activity - 0.5) + (domestic-activity - 0.5) + (transport-activity - 0.5) + (education-activity - 0.5)))))
+  report 1 / (1 + exp (-10 * activity-sum))
+end
+
+to-report minus-half [x]
+  report x - 0.5
+end
+
+to-report activity-sum
+  report sum map minus-half (list recreation-activity domestic-activity transport-activity education-activity)
 end
 
 to-report calculate-input ;; turtle-procedure
@@ -156,14 +165,18 @@ to-report calculate-input ;; turtle-procedure
 end
 
 to-report force-of-habit ;; turtle-procedure
-  report (1 / (1 + exp (-10 * ((food-exposure - 0.5) + (food-energy-density - 0.5) + (food-advertising - 0.5) + (food-convenience - 0.5)))))
+  report 1 / (1 + exp (-10 * food-sum))
+end
+
+to-report food-sum
+  report sum map minus-half (list food-exposure food-energy-density food-advertising food-convenience)
 end
 
 to-report c-control ;; turtle procedure
-  report (1 / (1 + exp (-10 * ((food-literacy - 0.5)))))
+  report 1 / (1 + exp (-10 * ((food-literacy - 0.5))))
 end
 
-to-report friend-input
+to-report friend-input ;; turtle-procedure
   report (1 / (1 + exp (-10 * (network-input-percent - 0.5)))) - 0.5
 end
 
@@ -175,7 +188,7 @@ to-report network-input-percent ;; turtle procedure
 end
 
 to-report calculate-mass ;; turtle procedure
-  report (mass + mass-delta * gamma1)
+  report mass + mass-delta * gamma1
 end
 
 to-report mass-delta ;; turtle procedure
@@ -252,7 +265,7 @@ number-of-nodes
 number-of-nodes
 0
 500
-426
+284
 1
 1
 NIL
