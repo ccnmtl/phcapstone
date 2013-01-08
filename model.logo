@@ -1,9 +1,14 @@
 turtles-own 
 [
   mass
-  force-of-diet-habit
+  input
+  base-output
+  total-output
+  force-of-habit
+  c-control ; conscious control of energy intake
   physical-activity
-  psych-ambivalence
+  friend-input
+  friend-output
 ]
 
 patches-own
@@ -39,9 +44,8 @@ to setup-nodes
     ; for visual reasons, we don't put any nodes *too* close to the edges
     setxy (random-xcor * 0.95) (random-ycor * 0.95)
     set mass random-normal 50 25
-    set force-of-diet-habit 50
+    set force-of-habit 50
     set physical-activity 50
-    set psych-ambivalence 50
   ]
 end
 
@@ -66,9 +70,8 @@ to go
   ask turtles
   [
     set mass calculate-mass
-    set force-of-diet-habit calculate-force-of-diet-habit
+    set force-of-habit calculate-force-of-habit
     set physical-activity calculate-physical-activity
-    set psych-ambivalence calculate-psych-ambivalence
     color-from-mass
     move-if-starving
   ]
@@ -114,16 +117,12 @@ to-report calculate-mass ;; turtle procedure
     ]
 end
 
-to-report calculate-force-of-diet-habit ;; turtle procedure
-  report food-exposure + food-energy-density + food-convenience + psych-ambivalence
+to-report calculate-force-of-habit ;; turtle procedure
+  report food-exposure + food-energy-density + food-convenience
 end
 
 to-report calculate-physical-activity ;; turtle-procedure
   report recreation-activity + domestic-activity + transport-activity + education-activity
-end
-
-to-report calculate-psych-ambivalence ;; turtle-procedure
-  report food-exposure + food-advertising + food-literacy + physical-activity
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
