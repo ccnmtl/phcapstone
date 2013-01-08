@@ -137,8 +137,12 @@ to-report calculate-total-output ;; turtle procedure
   report base-output + physical-activity * gamma5 + friend-output * gamma6
 end
 
+to-report sigmoid [t]
+  report 1 / (1 + exp (-1 * t))
+end
+
 to-report friend-output
-  report (1 / (1 + exp (-10 * (network-output-percent - 0.50)))) - 0.50
+  report sigmoid (10 * (network-output-percent - 0.50)) - 0.50
 end
 
 to-report network-output-percent ;; turtle procedure
@@ -149,7 +153,7 @@ to-report network-output-percent ;; turtle procedure
 end
 
 to-report physical-activity ;; turtle-procedure
-  report 1 / (1 + exp (-10 * activity-sum))
+  report sigmoid (10 * activity-sum)
 end
 
 to-report minus-half [x]
@@ -165,7 +169,7 @@ to-report calculate-input ;; turtle-procedure
 end
 
 to-report force-of-habit ;; turtle-procedure
-  report 1 / (1 + exp (-10 * food-sum))
+  report sigmoid (10 * food-sum)
 end
 
 to-report food-sum
@@ -173,11 +177,11 @@ to-report food-sum
 end
 
 to-report c-control ;; turtle procedure
-  report 1 / (1 + exp (-10 * ((food-literacy - 0.5))))
+  report sigmoid (10 * (food-literacy - 0.5))
 end
 
 to-report friend-input ;; turtle-procedure
-  report (1 / (1 + exp (-10 * (network-input-percent - 0.5)))) - 0.5
+  report sigmoid (10 * (network-input-percent - 0.5)) - 0.5
 end
 
 to-report network-input-percent ;; turtle procedure
@@ -192,7 +196,7 @@ to-report calculate-mass ;; turtle procedure
 end
 
 to-report mass-delta ;; turtle procedure
-  report (1 / (1 + exp (-1 * (input - total-output) * gamma1))) - 0.5
+  report sigmoid ((input - total-output) * gamma1) - 0.5
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
