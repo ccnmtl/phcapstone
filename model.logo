@@ -1,24 +1,29 @@
+globals
+[
+  gamma1
+  gamma2
+  gamma3
+  gamma4
+  gamma5
+  gamma6
+]
+
 turtles-own 
 [
   mass
   input
   base-output
   total-output
-  force-of-habit
-  c-control ; conscious control of energy intake
-  physical-activity
-  friend-input
-  friend-output
 ]
 
 patches-own
 [
-  caloric-density
   food-exposure
   food-energy-density
   food-advertising
   food-convenience
   food-literacy
+  
   recreation-activity
   domestic-activity
   transport-activity
@@ -28,6 +33,7 @@ patches-own
 to setup
   clear-all
   set-default-shape turtles "circle"
+  setup-globals
   setup-nodes
   ask turtles [color-from-mass]
   ask turtles [set size .5]
@@ -37,15 +43,23 @@ to setup
   reset-ticks
 end
 
+to setup-globals
+  set gamma1 1
+  set gamma2 1
+  set gamma3 1
+  set gamma4 1
+  set gamma5 1
+  set gamma6 1
+end
+
 to setup-nodes
   set-default-shape turtles "circle"
   create-turtles number-of-nodes
   [
     ; for visual reasons, we don't put any nodes *too* close to the edges
     setxy (random-xcor * 0.95) (random-ycor * 0.95)
-    set mass random-normal 50 25
-    set force-of-habit 50
-    set physical-activity 50
+    set mass random-normal 100 20
+    set base-output random-normal 100 5
   ]
 end
 
@@ -63,24 +77,36 @@ to setup-network
 end
 
 to setup-patches
-  ask patches [ set caloric-density pxcor * (100 / max-pxcor) ]
+  ask patches 
+  [ 
+    set recreation-activity random-normal 0.5 0.1
+    set domestic-activity random-normal 0.5 0.1
+    set transport-activity random-normal 0.5 0.1
+    set education-activity random-normal 0.5 0.1
+    
+    set food-exposure random-normal 0.5 0.1
+    set food-energy-density random-normal 0.5 0.1
+    set food-advertising random-normal 0.5 0.1
+    set food-convenience random-normal 0.5 0.1
+    set food-literacy random-normal 0.5 0.1
+  ]
 end
 
 to go
   ask turtles
   [
+    set total-output calculate-total-output
+    set input calculate-input
     set mass calculate-mass
-    set force-of-habit calculate-force-of-habit
-    set physical-activity calculate-physical-activity
     color-from-mass
-    move-if-starving
+    ; move-if-starving
   ]
   tick
 end
 
 to color-from-mass ;; turtle procedure 
   ifelse overweight?
-    [ set color scale-color red mass 40 120 ]
+    [ set color scale-color red mass 80 140 ]
     [ ifelse mass > 30 
       [ set color scale-color green mass 10 80  ]
       [ set color scale-color blue mass -50 50 ]
@@ -88,41 +114,72 @@ to color-from-mass ;; turtle procedure
 end
 
 to recolor-patches
-  ask patches [ set pcolor scale-color black caloric-density 0 200 ]
+  ask patches [ set pcolor scale-color black food-energy-density 0 2 ]
 end
 
 to move-if-starving ; turtle procedure
   if starving? 
   [
-    uphill caloric-density
+    uphill food-energy-density
   ]
 end
 
 to-report overweight?
-  report mass > 60
+  report mass > 120
 end
 
 to-report starving? ; turtle procedure
-  report mass < 30
+  report mass < 80
+end
+
+to-report calculate-total-output ;; turtle procedure
+  report (base-output + physical-activity * gamma5 + friend-output * gamma6)
+end
+
+to-report friend-output
+  report (1 / (1 + exp (-10 * (network-output-percent - 0.50)))) - 0.50
+end
+
+to-report network-output-percent ;; turtle procedure
+  let my-output total-output
+  ifelse empty? [total-output] of link-neighbors
+  [report 0.0]
+  [report (count link-neighbors with [total-output >= my-output]) / (count link-neighbors)]
+end
+
+to-report physical-activity ;; turtle-procedure
+  report (1 / (1 + exp (-10 * ((recreation-activity - 0.5) + (domestic-activity - 0.5) + (transport-activity - 0.5) + (education-activity - 0.5)))))
+end
+
+to-report calculate-input ;; turtle-procedure
+  report total-output + force-of-habit * gamma2 + friend-input * gamma3 - c-control * gamma4
+end
+
+to-report force-of-habit ;; turtle-procedure
+  report (1 / (1 + exp (-10 * ((food-exposure - 0.5) + (food-energy-density - 0.5) + (food-advertising - 0.5) + (food-convenience - 0.5)))))
+end
+
+to-report c-control ;; turtle procedure
+  report (1 / (1 + exp (-10 * ((food-literacy - 0.5)))))
+end
+
+to-report friend-input
+  report (1 / (1 + exp (-10 * (network-input-percent - 0.5)))) - 0.5
+end
+
+to-report network-input-percent ;; turtle procedure
+  let my-input input
+  ifelse empty? [input] of link-neighbors
+  [report 0.0]
+  [report (count link-neighbors with [input >= my-input]) / (count link-neighbors)]
 end
 
 to-report calculate-mass ;; turtle procedure
-  ifelse empty? [mass] of link-neighbors
-    [
-      report (mass + caloric-density) / 2
-    ]
-    [
-     let avg-mass mean [mass] of link-neighbors
-     report (mass + avg-mass + caloric-density) / 3
-    ]
+  report (mass + mass-delta * gamma1)
 end
 
-to-report calculate-force-of-habit ;; turtle procedure
-  report food-exposure + food-energy-density + food-convenience
-end
-
-to-report calculate-physical-activity ;; turtle-procedure
-  report recreation-activity + domestic-activity + transport-activity + education-activity
+to-report mass-delta ;; turtle procedure
+  report (1 / (1 + exp (-1 * (input - total-output) * gamma1))) - 0.5
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
