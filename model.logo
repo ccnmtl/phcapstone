@@ -269,7 +269,7 @@ number-of-nodes
 number-of-nodes
 0
 500
-284
+283
 1
 1
 NIL
@@ -291,6 +291,24 @@ NIL
 NIL
 NIL
 1
+
+PLOT
+0
+310
+200
+460
+plot 1
+NIL
+NIL
+0.0
+200.0
+0.0
+10.0
+true
+true
+"" ""
+PENS
+"default" 1.0 1 -16777216 true "" "histogram [mass] of turtles"
 
 @#$#@#$#@
 ## WHAT IS IT?
