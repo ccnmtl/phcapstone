@@ -227,10 +227,10 @@ ticks
 30.0
 
 BUTTON
-12
-154
-85
-187
+10
+70
+83
+103
 NIL
 setup
 NIL
@@ -244,10 +244,10 @@ NIL
 1
 
 BUTTON
-35
-242
-98
-275
+115
+195
+178
+228
 NIL
 go
 T
@@ -276,10 +276,10 @@ NIL
 HORIZONTAL
 
 BUTTON
-115
-255
-177
-288
+15
+195
+77
+228
 step
 go
 NIL
@@ -294,12 +294,12 @@ NIL
 
 PLOT
 0
-310
+303
 200
-460
-plot 1
-NIL
-NIL
+453
+mass
+mass
+count
 0.0
 200.0
 0.0
@@ -308,7 +308,7 @@ true
 true
 "" ""
 PENS
-"default" 1.0 1 -16777216 true "" "histogram [mass] of turtles"
+"count" 1.0 1 -16777216 false "" "histogram [mass] of turtles"
 
 @#$#@#$#@
 ## WHAT IS IT?
