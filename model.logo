@@ -198,6 +198,71 @@ end
 to-report mass-delta ;; turtle procedure
   report sigmoid ((input - total-output) * gamma1) - 0.5
 end
+
+;; -------------  test framework ------------------------------------------
+;; everything from here on out exists to set up various canned scenarios
+;; to test the code above
+;; ------------------------------------------------------------------------
+
+to run-tests
+  setup-tests
+  test-sigmoid
+end
+
+to setup-tests
+  clear-all
+  set-default-shape turtles "circle"
+  setup-globals
+  setup-test-nodes
+  ask turtles [color-from-mass]
+  ask turtles [set size .5]
+  setup-test-patches
+  recolor-patches
+  setup-test-network
+  reset-ticks
+end
+
+to setup-test-nodes
+  set-default-shape turtles "circle"
+  create-turtles 5
+  [
+    ; for visual reasons, we don't put any nodes *too* close to the edges
+    setxy 1 1
+    set mass 100
+    set base-output 100
+  ]
+end
+
+to setup-test-network
+end
+
+to setup-test-patches
+  ask patches 
+  [ 
+    set recreation-activity 0.5
+    set domestic-activity 0.5
+    set transport-activity 0.5
+    set education-activity 0.5
+    
+    set food-exposure 0.5
+    set food-energy-density 0.5
+    set food-advertising 0.5
+    set food-convenience 0.5
+    set food-literacy 0.5
+  ]
+end
+
+to assert-equal [lbl a b]
+  ifelse a = b
+  [print (word "PASS " lbl)]
+  [print (word "FAIL " lbl)]
+end
+
+to test-sigmoid
+  print "Testing sigmoid function implementation: "
+  assert-equal "sigmoid 0.5" 0.5 sigmoid 0
+  assert-equal "sigmoid 1"  0.7310585786300049 sigmoid 1
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
@@ -309,6 +374,23 @@ true
 "" ""
 PENS
 "count" 1.0 1 -16777216 false "" "histogram [mass] of turtles"
+
+BUTTON
+660
+10
+757
+43
+run tests
+run-tests
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
 
 @#$#@#$#@
 ## WHAT IS IT?
