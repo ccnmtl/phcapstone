@@ -115,7 +115,7 @@ to-report starving? ; turtle procedure
 end
 
 to-report calculate-total-output ;; turtle procedure
-  report base-output + physical-activity * gamma5 + friend-output * gamma6
+  report base-output + physical-activity * gamma5 + friend-output * gamma6 + random-normal 0 sigma
 end
 
 to-report sigmoid [t]
@@ -146,7 +146,7 @@ to-report activity-sum
 end
 
 to-report calculate-input ;; turtle-procedure
-  report total-output + force-of-habit * gamma2 + friend-input * gamma3 - c-control * gamma4
+  report total-output + force-of-habit * gamma2 + friend-input * gamma3 - c-control * gamma4 + random-normal 0 sigma
 end
 
 to-report force-of-habit ;; turtle-procedure
@@ -273,9 +273,9 @@ ticks
 
 BUTTON
 0
-265
+300
 73
-298
+333
 NIL
 setup
 NIL
@@ -290,9 +290,9 @@ NIL
 
 BUTTON
 145
-265
+300
 208
-298
+333
 NIL
 go
 T
@@ -322,9 +322,9 @@ HORIZONTAL
 
 BUTTON
 85
-265
+300
 147
-298
+333
 step
 go
 NIL
@@ -339,9 +339,9 @@ NIL
 
 PLOT
 0
-303
+338
 200
-453
+473
 mass
 mass
 count
@@ -457,6 +457,21 @@ gamma6
 0
 10
 1
+.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+0
+255
+172
+288
+sigma
+sigma
+0
+10
+6.2
 .1
 1
 NIL

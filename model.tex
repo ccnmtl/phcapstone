@@ -73,7 +73,8 @@ and $\gamma_1 = 1$.
 \subsection{Agent Energy Intake}
 
 \begin{equation}
-input = \text{total-output} + \text{force-of-habit} * \gamma_2 + \text{friend-input} * \gamma_3 - \text{c-control}* \gamma_4
+input = \text{total-output} + \text{force-of-habit} * \gamma_2 +
+\text{friend-input} * \gamma_3 - \text{c-control}* \gamma_4 + N(0, \sigma)
 \end{equation}
 
 Where force-of-habit is
@@ -99,7 +100,7 @@ where x is \% of social network ties with input $>=$ agent's own input. and $ \g
 \subsection{Agent Energy Expenditure}
 
 \begin{equation}
-\text{total-output} = \text{base-output} + \text{physical-activity}*\gamma_5 + \text{friend-output}*\gamma_6
+\text{total-output} = \text{base-output} + \text{physical-activity}*\gamma_5 + \text{friend-output}*\gamma_6 + N(0, \sigma)
 \end{equation}
 
 where  physical-activity is
