@@ -24,7 +24,6 @@ patches-own
 to setup
   clear-all
   set-default-shape turtles "circle"
-  setup-globals
   setup-nodes
   ask turtles [color-from-mass]
   ask turtles [set size .5]
@@ -32,15 +31,6 @@ to setup
   recolor-patches
   setup-network
   reset-ticks
-end
-
-to setup-globals
-  set gamma1 1
-  set gamma2 1
-  set gamma3 1
-  set gamma4 1
-  set gamma5 1
-  set gamma6 1
 end
 
 to setup-nodes
@@ -203,7 +193,6 @@ end
 to setup-tests
   clear-all
   set-default-shape turtles "circle"
-  setup-globals
   setup-test-nodes
   ask turtles [color-from-mass]
   ask turtles [set size .5]
