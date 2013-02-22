@@ -187,7 +187,7 @@ to-report calculate-mass ;; turtle procedure
 end
 
 to-report mass-delta ;; turtle procedure
-  report sigmoid ((input - total-output) * gamma1) - 0.5
+  report sigmoid (input - total-output) - 0.5
 end
 
 ;; -------------  test framework ------------------------------------------
