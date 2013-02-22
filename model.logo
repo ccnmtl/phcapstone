@@ -60,16 +60,16 @@ end
 to setup-patches
   ask patches 
   [ 
-    set recreation-activity random-normal 0.5 0.1
-    set domestic-activity random-normal 0.5 0.1
-    set transport-activity random-normal 0.5 0.1
-    set education-activity random-normal 0.5 0.1
+    set recreation-activity random-gamma 2 0.5
+    set domestic-activity random-gamma 2 0.5
+    set transport-activity random-gamma 2 0.5
+    set education-activity random-gamma 2 0.5
     
-    set food-exposure random-normal 0.5 0.1
-    set food-energy-density random-normal 0.5 0.1
-    set food-advertising random-normal 0.5 0.1
-    set food-convenience random-normal 0.5 0.1
-    set food-literacy random-normal 0.5 0.1
+    set food-exposure random-gamma 2 0.5
+    set food-energy-density random-gamma 2 0.5
+    set food-advertising random-gamma 2 0.5
+    set food-convenience random-gamma 2 0.5
+    set food-literacy random-gamma 2 0.5
   ]
 end
 

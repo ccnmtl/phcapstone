@@ -64,7 +64,7 @@ mass = mass_{t-1} + f(\text{input} - \text{total-output}) * \gamma_1
 and $\gamma_1 = 1$. Where $f(\text{input} - \text{total-input})$ is
 
 \begin{equation}
-\frac{1}{1 + e^{-(input - \text{total-output})} - 0.50
+\frac{1}{1 + e^{-(input - \text{total-output})}} - 0.50
 \end{equation}
 
 and $\gamma_1 = 1$.
@@ -131,16 +131,20 @@ $$ \text{base-output} = N(100, 5)$$
 
 ENVIRONMENT LEVEL
 
-$$ \text{recreation-activity} = N(0.5, 0.10) $$
-$$ \text{domestic-activity} = N(0.5, 0.10) $$
-$$ \text{transport-activity} = N(0.5, 0.10) $$
-$$ \text{education-activity} = N(0.5, 0.10) $$
+Note: $\Gamma(\alpha, \lambda)$ is a Gamma distribution with
+$\alpha = \frac{\text{mean} \cdot \text{mean}}{\text{variance}}$
+$\lambda = \frac{1}{\frac{\text{variance}}{\text{mean}}}$
 
-$$ \text{food-exposure} = N(0.5, 0.10) $$
-$$ \text{food-energy-density} = N(0.5, 0.10) $$
-$$ \text{food-advertising} = N(0.5, 0.10) $$
-$$ \text{food-convenience} = N(0.5, 0.10) $$
-$$ \text{food-literacy} = N(0.5, 0.10) $$
+$$ \text{recreation-activity} = \Gamma(0.5, 0.10) $$
+$$ \text{domestic-activity} = \Gamma(0.5, 0.10) $$
+$$ \text{transport-activity} = \Gamma(0.5, 0.10) $$
+$$ \text{education-activity} = \Gamma(0.5, 0.10) $$
+
+$$ \text{food-exposure} = \Gamma(0.5, 0.10) $$
+$$ \text{food-energy-density} = \Gamma(0.5, 0.10) $$
+$$ \text{food-advertising} = \Gamma(0.5, 0.10) $$
+$$ \text{food-convenience} = \Gamma(0.5, 0.10) $$
+$$ \text{food-literacy} = \Gamma(0.5, 0.10) $$
 
 
 
