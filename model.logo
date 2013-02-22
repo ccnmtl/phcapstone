@@ -1,12 +1,3 @@
-globals
-[
-  gamma1
-  gamma2
-  gamma3
-  gamma4
-  gamma5
-  gamma6
-]
 
 turtles-own 
 [
@@ -326,15 +317,15 @@ NIL
 1
 
 SLIDER
-25
-25
-202
-58
+0
+10
+177
+43
 number-of-nodes
 number-of-nodes
 0
 10000
-2160
+494
 1
 1
 NIL
@@ -391,6 +382,96 @@ NIL
 NIL
 NIL
 1
+
+SLIDER
+0
+45
+172
+78
+gamma1
+gamma1
+0
+10
+1
+.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+0
+80
+172
+113
+gamma2
+gamma2
+0
+10
+1
+.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+0
+115
+172
+148
+gamma3
+gamma3
+0
+10
+1
+.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+0
+145
+172
+178
+gamma4
+gamma4
+0
+10
+1
+.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+0
+175
+172
+208
+gamma5
+gamma5
+0
+10
+1
+.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+0
+205
+172
+238
+gamma6
+gamma6
+0
+10
+1
+.1
+1
+NIL
+HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?
