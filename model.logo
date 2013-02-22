@@ -292,10 +292,10 @@ ticks
 30.0
 
 BUTTON
-10
-70
-83
-103
+0
+265
+73
+298
 NIL
 setup
 NIL
@@ -309,10 +309,10 @@ NIL
 1
 
 BUTTON
-115
-195
-178
-228
+145
+265
+208
+298
 NIL
 go
 T
@@ -333,18 +333,18 @@ SLIDER
 number-of-nodes
 number-of-nodes
 0
-500
-481
+10000
+2160
 1
 1
 NIL
 HORIZONTAL
 
 BUTTON
-15
-195
-77
-228
+85
+265
+147
+298
 step
 go
 NIL
