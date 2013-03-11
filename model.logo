@@ -750,6 +750,25 @@ food-literacy-lambda
 0
 Number
 
+PLOT
+5
+595
+205
+745
+mass over time
+NIL
+NIL
+0.0
+10.0
+0.0
+10.0
+true
+true
+"" ""
+PENS
+"mean" 1.0 0 -16777216 true "" "plot mean [mass] of turtles"
+"stddev" 1.0 0 -11221820 true "" "plot standard-deviation [mass] of turtles"
+
 @#$#@#$#@
 ## WHAT IS IT?
 
