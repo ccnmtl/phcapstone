@@ -60,16 +60,16 @@ end
 to setup-patches
   ask patches 
   [ 
-    set recreation-activity random-gamma 2 0.5
-    set domestic-activity random-gamma 2 0.5
-    set transport-activity random-gamma 2 0.5
-    set education-activity random-gamma 2 0.5
+    set recreation-activity random-gamma recreation-activity-alpha recreation-activity-lambda
+    set domestic-activity random-gamma domestic-activity-alpha domestic-activity-lambda
+    set transport-activity random-gamma transport-activity-alpha transport-activity-lambda
+    set education-activity random-gamma education-activity-alpha education-activity-lambda
     
-    set food-exposure random-gamma 2 0.5
-    set food-energy-density random-gamma 2 0.5
-    set food-advertising random-gamma 2 0.5
-    set food-convenience random-gamma 2 0.5
-    set food-literacy random-gamma 2 0.5
+    set food-exposure random-gamma food-exposure-alpha food-exposure-lambda
+    set food-energy-density random-gamma food-energy-density-alpha food-energy-density-lambda
+    set food-advertising random-gamma food-advertising-alpha food-advertising-lambda
+    set food-convenience random-gamma food-convenience-alpha food-convenience-lambda
+    set food-literacy random-gamma food-literacy-alpha food-literacy-lambda
   ]
 end
 
@@ -551,6 +551,204 @@ base-output-sigma
 1
 NIL
 HORIZONTAL
+
+INPUTBOX
+210
+540
+367
+600
+recreation-activity-alpha
+2
+1
+0
+Number
+
+INPUTBOX
+380
+540
+537
+600
+recreation-activity-lambda
+0.5
+1
+0
+Number
+
+INPUTBOX
+210
+600
+367
+660
+domestic-activity-alpha
+2
+1
+0
+Number
+
+INPUTBOX
+380
+600
+537
+660
+domestic-activity-lambda
+0.5
+1
+0
+Number
+
+INPUTBOX
+210
+660
+367
+720
+transport-activity-alpha
+2
+1
+0
+Number
+
+INPUTBOX
+380
+660
+537
+720
+transport-activity-lambda
+0.5
+1
+0
+Number
+
+INPUTBOX
+210
+720
+367
+780
+education-activity-alpha
+2
+1
+0
+Number
+
+INPUTBOX
+380
+720
+537
+780
+education-activity-lambda
+0.5
+1
+0
+Number
+
+INPUTBOX
+210
+780
+367
+840
+food-exposure-alpha
+2
+1
+0
+Number
+
+INPUTBOX
+380
+780
+537
+840
+food-exposure-lambda
+0.5
+1
+0
+Number
+
+INPUTBOX
+210
+840
+367
+900
+food-energy-density-alpha
+2
+1
+0
+Number
+
+INPUTBOX
+380
+840
+537
+900
+food-energy-density-lambda
+0.5
+1
+0
+Number
+
+INPUTBOX
+210
+900
+367
+960
+food-advertising-alpha
+2
+1
+0
+Number
+
+INPUTBOX
+380
+900
+537
+960
+food-advertising-lambda
+0.5
+1
+0
+Number
+
+INPUTBOX
+210
+960
+367
+1020
+food-convenience-alpha
+2
+1
+0
+Number
+
+INPUTBOX
+380
+960
+537
+1020
+food-convenience-lambda
+0.5
+1
+0
+Number
+
+INPUTBOX
+210
+1020
+367
+1080
+food-literacy-alpha
+2
+1
+0
+Number
+
+INPUTBOX
+380
+1020
+537
+1080
+food-literacy-lambda
+0.5
+1
+0
+Number
 
 @#$#@#$#@
 ## WHAT IS IT?
