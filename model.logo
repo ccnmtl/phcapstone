@@ -381,7 +381,7 @@ gamma1
 gamma1
 0
 10
-1
+7
 .1
 1
 NIL
@@ -396,7 +396,7 @@ gamma2
 gamma2
 0
 10
-1
+10
 .1
 1
 NIL
@@ -1096,6 +1096,103 @@ NetLogo 5.0.2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
+<experiments>
+  <experiment name="gamma1/gamma2" repetitions="1" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="200"/>
+    <metric>mean [mass] of turtles</metric>
+    <enumeratedValueSet variable="gamma4">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="food-exposure-alpha">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="food-literacy-lambda">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="number-of-nodes">
+      <value value="494"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="gamma5">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="base-output-sigma">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="base-output-mean">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="agent-initial-mass-mean">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="food-convenience-lambda">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="food-advertising-lambda">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="domestic-activity-alpha">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="food-exposure-lambda">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="recreation-activity-alpha">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="sigma2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="gamma2" first="1" step="1" last="10"/>
+    <enumeratedValueSet variable="food-convenience-alpha">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="education-activity-lambda">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="education-activity-alpha">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="food-energy-density-alpha">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="food-advertising-alpha">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="transport-activity-alpha">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="sigma1">
+      <value value="6.2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="food-literacy-alpha">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="transport-activity-lambda">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="agent-initial-mass-sigma">
+      <value value="20"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="recreation-activity-lambda">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="domestic-activity-lambda">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="food-energy-density-lambda">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="gamma3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="gamma6">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="gamma1" first="1" step="1" last="10"/>
+  </experiment>
+</experiments>
 @#$#@#$#@
 @#$#@#$#@
 default
